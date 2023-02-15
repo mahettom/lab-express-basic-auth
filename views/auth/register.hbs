@@ -1,0 +1,14 @@
+
+
+{{#if errorMessage}}
+<h3>Wooops, Houston we have a problem!</h3>
+<H5>Make sure {{errorMessage}}</H5>
+{{/if}}
+<form action="/auth/register" method="post" id="login-form">
+
+    <input type="text" name="username" id="username" placeholder="Choose a cool name here">
+    <input type="password" name="password" id="password" placeholder="Pick a strong password">
+
+  <button>Sign up</button>
+
+</form>

@@ -1,8 +1,26 @@
+
+*{
+  box-sizing: border-box;
+  padding: 0rem;
+  margin: 0rem;
+}
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
+  margin: 2rem;
+  padding: 2rem;
   color: #00B7FF;
+  border-radius: 0.3rem;
+}
+
+#main-section{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -17,6 +17,20 @@ const favicon = require("serve-favicon");
 // https://www.npmjs.com/package/path
 const path = require("path");
 
+
+
+
+// THE 2 IMPORT STORE IN VARIABLE BELOW ARE USE AT THE BOTTOM OF THE FILE !! 
+
+// GIVE THE SESSION ACCESS ---> INTO THE DATABASE
+const MongoStore = require('connect-mongo')
+
+// GIVE COOKIE TO USER WITH A SESSION ID FOR REMEMBER IT'S HIM
+const session = require('express-session')
+
+
+
+
 // Middleware configuration
 module.exports = (app) => {
   // In development environment the app logs
@@ -36,4 +50,18 @@ module.exports = (app) => {
 
   // Handles access to the favicon
   app.use(favicon(path.join(__dirname, "..", "public", "images", "favicon.ico")));
+
+
+  // ?? USE MONGOSTORE AND EXPRESS-SESSION PREVIOUSLY DECLARED TO CREATE THE SESSION AND LINK IT TO MONGO-COMPASS ??
+  app.use(
+    session({
+      secret: process.env.HEAD_ON_KEYBOARD,
+      cookie: {
+        maxAge: 1000 * 60 * 60
+      },
+      store: MongoStore.create({
+        mongoUrl: process.env.MONGO_URI
+      })
+    })
+  )
 };
